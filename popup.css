@@ -1,0 +1,9 @@
+body {
+    width: 300px;
+    padding: 10px;
+}
+
+.sprintItem {
+    margin-bottom: 10px; /* Add margin between items */
+}
+

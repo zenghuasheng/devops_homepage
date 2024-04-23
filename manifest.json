@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "devops主页",
+  "version": "1.0",
+  "description": "",
+  "permissions": [
+    "storage",
+    "https://our.ones.pro/",
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://our.ones.pro/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
