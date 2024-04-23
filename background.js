@@ -19,7 +19,7 @@ sprints(
         // Define the queries and variables for each endpoint
         let sprintVariables = {
             filter: {
-                project_in: ["KuZfE9scT2ca5BXF"],
+                project_in: [request.project],
                 statusCategory_in: ["in_progress"]
             },
             orderBy: {name: "ASC"}

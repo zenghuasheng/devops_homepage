@@ -7,3 +7,6 @@ body {
     margin-bottom: 10px; /* Add margin between items */
 }
 
+#sprintsContainer {
+    margin-top: 10px;
+}
