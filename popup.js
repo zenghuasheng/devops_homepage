@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   // https://devopsour.ones.pro/#/env?projectUUID=KuZfE9scT2ca5BXF&sprintUUID=HxN3hM66
                   // 增加迭代链接，展示 name, 链接url 取 uuid
                   sprintDiv.innerHTML = `
-            <a href="https://devopsour.ones.pro/#/env?projectUUID=${project}&sprintUUID=${sprint.uuid}" target="_blank">${sprint.name}</a>
+            <a href="https://devopsour.ones.pro/#/env?projectUUID=${sprint.project.uuid}&sprintUUID=${sprint.uuid}" target="_blank">${sprint.name}</a>
           `;
                   sprintsContainer.appendChild(sprintDiv);
               });

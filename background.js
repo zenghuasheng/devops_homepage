@@ -13,6 +13,7 @@ sprints(
 ) {
     uuid
     name
+    project{uuid}
 }
         }`
 
@@ -45,10 +46,39 @@ sprints(
                 return [];
             });
 
+        let sprintVariables2 = {
+            filter: {
+                project_in: ["GL3ysesFPdnAQNIU"],
+                name_match: "研发一组",
+            },
+            orderBy: {createTime: "DESC"}
+        }
+        const fetchPromise2 = fetch('https://our.ones.pro/project/api/project/team/RDjYMhKq/items/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add other necessary headers
+            },
+            body: JSON.stringify({
+                query: sprintQuery,
+                variables: sprintVariables2,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                // {"data":{"sprints":[{"progress":5005153,"uuid":"HxN3hM66"}]}}
+                return data.data.sprints;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                return [];
+            });
 
-        Promise.all([fetchPromise1])
-            .then(([sprints]) => {
-                const allSprints = [...sprints];
+
+        Promise.all([fetchPromise1, fetchPromise2])
+            .then(([sprints, sprints2]) => {
+                sprints2 = sprints2.slice(0, 3)
+                const allSprints = [...sprints, ...sprints2];
                 sendResponse(allSprints);
             })
             .catch(error => {
