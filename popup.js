@@ -32,6 +32,28 @@ document.addEventListener('DOMContentLoaded', function () {
                   // https://devopsour.ones.pro/#/env?projectUUID=KuZfE9scT2ca5BXF&sprintUUID=HxN3hM66
                   // 增加迭代链接，展示 name, 链接url 取 uuid
                   sprintDiv.innerHTML = `
+            <a href="https://our.ones.pro/project/#/team/RDjYMhKq/project/${sprint.project.uuid}/component/16oRbIVr/sprint/${sprint.uuid}/overview" target="_blank">${sprint.name}</a>
+          `;
+                  sprintsContainer.appendChild(sprintDiv);
+              });
+
+              // 添加一条分割线
+              const separator = document.createElement('div');
+              separator.classList.add('separator');
+              sprintsContainer.appendChild(separator);
+              // 添加 devops 标题
+              const devopsTitle = document.createElement('div');
+              devopsTitle.classList.add('sprintItem'); // Add a class for styling
+              devopsTitle.innerHTML = `
+            <p>devops主页</p>
+          `;
+              sprintsContainer.appendChild(devopsTitle);
+
+              fetchedSprints.forEach(sprint => {
+                  const sprintDiv = document.createElement('div');
+                  sprintDiv.classList.add('sprintItem'); // Add a class for styling
+                  sprintDiv.dataset.sprintinfo = JSON.stringify(sprint); // Store sprint info as a data attribute
+                  sprintDiv.innerHTML = `
             <a href="https://devopsour.ones.pro/#/env?projectUUID=${sprint.project.uuid}&sprintUUID=${sprint.uuid}" target="_blank">${sprint.name}</a>
           `;
                   sprintsContainer.appendChild(sprintDiv);
