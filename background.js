@@ -21,7 +21,7 @@ sprints(
         let sprintVariables = {
             filter: {
                 project_in: [request.project],
-                statusCategory_in: ["in_progress"]
+                statusCategory_in: ["to_do", "in_progress"]
             },
             orderBy: {name: "ASC"}
         }
